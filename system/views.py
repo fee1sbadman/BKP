@@ -11,6 +11,14 @@ def home(request):
     return render(request, 'system/home.html')
 
 
+def about(request):
+    return render(request, 'system/about.html')
+
+
+def contact(request):
+    return render(request, 'system/contact.html')
+
+
 def discipline_list(request):
     dis = Discipline.objects.all()
     return render(request, 'system/dis_list.html', {'dis':dis})
@@ -69,9 +77,10 @@ def vote(request, number, question_id):
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
         # Redisplay the question voting form.
-        return render(request, 'system/fixed_test.html', {
-            'question': question,
-            'error_message': "You didn't select a choice.",})
+        #return render(request, 'system/fixed_test.html', {
+            #'question': question,
+            #'error_message': "You didn't select a choice.",})
+        return HttpResponseRedirect(reverse('fixed_test', args=(dis.id, theme.id, test.id, number, )))
     else:
         mas = question.right_choice.split(',')
         mas_count = len(mas)
