@@ -1,0 +1,26 @@
+{% extends "system/base.html" %}
+{% block content %}
+<div id="heading" style='background-color: #e7e7e7'>
+			<h1>Темы</h1>
+		</div>
+		<aside>
+<nav>
+	<ul class="aside-menu">
+		<li><a href = '{% url "dis_list" %}'>ДИСЦИПЛИНЫ</li>
+		<li class = 'active'>ТЕМЫ</li>
+		<li><a href="{% url 'test_list' %}">ТЕСТЫ</a></li>
+	</ul>
+</nav>
+		</aside>
+		<section>
+<blockquote>
+    <p>{{theme.name}}</p>
+    <li>{{theme.info}}</li>
+    <p>Список доступных тестов</p>
+    {% for test in theme.test_set.all %}
+        <li><a href ='{% url "test_details" test.theme.discipline.id test.theme.id test.id %}'>{{test.name}}</a></li>
+    {% endfor %}
+	</blockquote>
+</section>
+	</div>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends "system/base.html" %}
+{% block content %}
+<div id="heading" style='background-color: #e7e7e7'>
+			<h1>Темы</h1>
+		</div>
+		<aside>
+<nav>
+	<ul class="aside-menu">
+		<li><a href="{% url 'dis_list' %}">ДИСЦИПЛИНЫ</a></li>
+		<li class = 'active'>ТЕМЫ</li>
+		<li><a href="{% url 'test_list' %}">ТЕСТЫ</a></li>
+	</ul>
+</nav>
+		</aside>
+		<section>
+<blockquote>
+    {% for t in theme %}
+       <p>{{forloop.counter}})<a href = '{% url "theme_details" t.discipline.id t.id %}'>{{t.name}}</a></p>
+    {% endfor %}
+	</blockquote>
+</section>
+	</div>
+{% endblock content %}

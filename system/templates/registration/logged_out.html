@@ -1,0 +1,23 @@
+{% extends "system/base.html" %}
+{% block content %}
+<div id="heading" style='background-color: #e7e7e7'>
+			<h1>Выход</h1>
+		</div>
+		<aside>
+<nav>
+	<ul class="aside-menu">
+		<li><a href="{% url 'dis_list' %}">ДИСЦИПЛИНЫ</li>
+		<li><a href="{% url 'theme_list' %}">ТЕМЫ</li>
+		<li><a href="{% url 'test_list' %}">ТЕСТЫ</a></li>
+	</ul>
+</nav>
+		</aside>
+	
+		<section>
+<blockquote>
+	<p>Logged out!</p>  
+    <a href="{% url 'login'%}">Click here to login again.</a>
+	</blockquote>
+</section>
+	</div>
+{% endblock content %}

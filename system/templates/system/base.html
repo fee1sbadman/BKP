@@ -1,0 +1,35 @@
+{% load static %}
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>Testing</title>
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<a href="/">WELLCOME</a>
+			<form name="search" action="#" method="get">
+				<input type="text" name="q" placeholder="Search"><button type="submit">GO</button>
+			</form>
+		</header>
+		<nav>
+	<ul class="top-menu">
+		<li><a href="/">HOME</a></li>
+		<li><a href = '#'>ABOUT US</li>
+		<li><a href="#">CONTACT</a></li>
+		{% if user.is_authenticated %}
+		 	<li>User: {{ user.get_username }}</li>
+     		<li><a href="{% url 'logout'%}?next={{request.path}}">выход</a></li>   
+   		{% else %}
+     		<li><a href="{% url 'login'%}?next={{request.path}}">Войти</a></li>   
+   		{% endif %}
+	</ul>
+		</nav>
+		{% block content %}			
+	{% endblock %}
+	<footer></footer>
+</body>
+</html>

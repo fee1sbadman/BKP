@@ -1,0 +1,25 @@
+{% extends "system/base.html" %}
+{% block content %}
+<div id="heading" style='background-color: #e7e7e7'>
+			<h1>Home</h1>
+		</div>
+		<aside>
+<nav>
+	<ul class="aside-menu">
+		<li><a href="{% url 'dis_list' %}">ДИСЦИПЛИНЫ</li>
+		<li><a href="{% url 'theme_list' %}">ТЕМЫ</li>
+		<li><a href="{% url 'test_list' %}">ТЕСТЫ</a></li>
+	</ul>
+</nav>
+		</aside>
+	
+		<section>
+<blockquote>
+	<p>
+    Данное приложение предназначено для проведение тестирования. Здесь вы сможете найти тесты на любой вкус: фиксированные (аналогичные классическому бланковому тестированию), 
+    динамические (вопросы генерируются в случайном порядке) и адаптивные (вопросы генерируются исходя из ваших знаний).
+    </p>
+	</blockquote>
+</section>
+	</div>
+{% endblock content %}

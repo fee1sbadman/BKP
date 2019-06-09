@@ -1,0 +1,20 @@
+{% extends "system/base.html" %}
+{% block content %}
+<div id="heading" style='background-color: #e7e7e7'>
+			<h1>Тесты</h1>
+		</div>
+		<aside>
+<nav>
+	<ul class="aside-menu">
+		<li><a href="{% url 'dis_list' %}">ДИСЦИПЛИНЫ</a></li>
+	    <li><a href="{% url 'theme_list' %}">ТЕМЫ</a></li>
+		<li class='active'>ТЕСТЫ</li>
+	</ul>
+</nav>
+		</aside>
+		<section>
+<blockquote>
+    <p><a href='{% url "fixed_test" pk=pk theme_id=theme_id test_id=test_id number=1 %}'>Фиксированное тестирование</a></p>
+</section>
+	</div>
+{% endblock content %}

@@ -1,0 +1,37 @@
+{% extends "system/base.html" %}
+{% block content %}
+<div id="heading" style='background-color: #e7e7e7'>
+			<h1>Тестирование</h1>
+		</div>
+		<aside>
+<nav>
+	<ul class="aside-menu">
+		<li><a href="{% url 'dis_list' %}">ДИСЦИПЛИНЫ</a></li>
+	    <li><a href="{% url 'theme_list' %}">ТЕМЫ</a></li>
+		<li class='active'>ТЕСТЫ</li>
+	</ul>
+</nav>
+		</aside>
+		<section>
+<blockquote>
+	<p>{{question.text}}</p>
+	{% if question.image %}
+		<img src='{{question.image.url}}' width='500' height='500'/>
+	{% endif %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form action = "{% url 'vote' number question.id %}" method = 'post'>
+{% csrf_token %}
+{%for choice in choices %}
+	{% if count > 2 %}
+    <input type="checkbox" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.text }}</label><br />
+	{% else %}
+	<input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.text }}</label><br />
+	{% endif %}
+{% endfor %}
+    <input type="submit" value="Выбрать" />
+	</blockquote>
+</section>
+	</div>
+{% endblock content %}
