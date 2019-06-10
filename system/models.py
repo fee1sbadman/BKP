@@ -38,6 +38,7 @@ class Test(models.Model):
 class Question(models.Model):
     test = models.ForeignKey(Test, on_delete=models.CASCADE)
     text = models.TextField()
+    image = models.ImageField(upload_to='images/', height_field=None, width_field=None, max_length=None, blank = True)
     complexity = models.IntegerField()
     right_choice = models.CharField(max_length=10)
 
